@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:framework_challenge/features/home/presentation/widgets/fruit_card.dart';
+import 'package:framework_challenge/features/item/presentation/pages/item.dart';
 import 'package:framework_challenge/shared/png_images.dart';
-import 'package:framework_challenge/shared/widgets/space.dart';
 
 class FruitList extends StatelessWidget {
   const FruitList({
@@ -16,13 +16,14 @@ class FruitList extends StatelessWidget {
         crossAxisSpacing: 8,
         children: [
           FruitCard(
-            function: () {},
-            imgPath: PngImages.apple,
-            name: "Maçã",
-            value: 12.0,
-          ),
-          FruitCard(
-            function: () {},
+            function: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Item(),
+                ),
+              );
+            },
             imgPath: PngImages.apple,
             name: "Maçã",
             value: 12.0,
