@@ -57,8 +57,11 @@ class _Image extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Center(
-        child: Image(
-          image: AssetImage(imgPath),
+        child: Hero(
+          tag: 'abc',
+          child: Image(
+            image: AssetImage(imgPath),
+          ),
         ),
       ),
     );

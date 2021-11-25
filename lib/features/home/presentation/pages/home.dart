@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:framework_challenge/features/home/presentation/widgets/fruit_list.dart';
-import 'package:framework_challenge/features/home/presentation/widgets/header.dart';
+import 'package:framework_challenge/features/home/presentation/widgets/home_header.dart';
 import 'package:framework_challenge/shared/widgets/space.dart';
 
 class Home extends StatefulWidget {
@@ -22,14 +22,16 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    const _padding = 16.0;
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: _padding),
           child: Column(
             children: const <Widget>[
               VSpace(16),
-              Header(),
+              HomeHeader(),
               VSpace(32),
               FruitList(),
             ],
