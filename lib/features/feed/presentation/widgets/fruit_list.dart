@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:framework_challenge/features/home/presentation/widgets/fruit_card.dart';
+import 'package:framework_challenge/features/feed/presentation/widgets/fruit_card.dart';
 import 'package:framework_challenge/features/item/presentation/pages/item.dart';
 import 'package:framework_challenge/shared/png_images.dart';
 

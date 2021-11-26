@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:framework_challenge/shared/widgets/button.dart';
 
-class ItemHeader extends StatelessWidget {
-  const ItemHeader({Key? key}) : super(key: key);
+class Header extends StatelessWidget {
+  const Header({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
