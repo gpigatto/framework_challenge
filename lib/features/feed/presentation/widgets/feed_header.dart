@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:framework_challenge/shared/widgets/button.dart';
 
-class HomeHeader extends StatelessWidget {
-  const HomeHeader({
+class FeedHeader extends StatelessWidget {
+  const FeedHeader({
     Key? key,
   }) : super(key: key);
 

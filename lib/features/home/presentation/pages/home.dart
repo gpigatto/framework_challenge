@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:framework_challenge/features/home/presentation/widgets/fruit_list.dart';
-import 'package:framework_challenge/features/home/presentation/widgets/home_header.dart';
-import 'package:framework_challenge/shared/widgets/space.dart';
+import 'package:framework_challenge/features/home/utils/navigation_list.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -23,36 +21,27 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     const _padding = 16.0;
+    var _navigationList = NavigationList().list;
 
     return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: _padding),
-          child: Column(
-            children: const <Widget>[
-              VSpace(16),
-              HomeHeader(),
-              VSpace(32),
-              FruitList(),
-            ],
-          ),
+          child: _navigationList[_selectedIndex].body,
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.green,
-        onTap: _onItemTapped,
-      ),
+      bottomNavigationBar: _bottomBar(_navigationList),
+    );
+  }
+
+  BottomNavigationBar _bottomBar(List<NavigationListObject> _navigationList) {
+    return BottomNavigationBar(
+      items: _navigationList.map((item) {
+        return item.bottomNavigationBarItem;
+      }).toList(),
+      currentIndex: _selectedIndex,
+      selectedItemColor: Colors.green,
+      onTap: _onItemTapped,
     );
   }
 }
