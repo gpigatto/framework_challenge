@@ -34,7 +34,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  BottomNavigationBar _bottomBar(List<NavigationListObject> _navigationList) {
+  _bottomBar(List<NavigationListObject> _navigationList) {
     return BottomNavigationBar(
       items: _navigationList.map((item) {
         return item.bottomNavigationBarItem;
