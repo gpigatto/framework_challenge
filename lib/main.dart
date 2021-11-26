@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:framework_challenge/core/infrastructure/service_locator.dart';
 import 'package:framework_challenge/features/home/presentation/pages/home.dart';
+import 'package:framework_challenge/features/login/presentation/bloc/get_logged_bloc.dart';
 
-void main() {
+void main() async {
+  await initServiceLocator();
+
   runApp(const MyApp());
 }
 
@@ -10,12 +15,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<GetLoggedBloc>(
+          create: (BuildContext context) => GetLoggedBloc(serviceLocator()),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const Home(),
       ),
-      home: const Home(),
     );
   }
 }

@@ -80,40 +80,4 @@ class Item extends StatelessWidget {
       ),
     );
   }
-
-  _addToCart() {
-    const _padding = 14.0;
-    const _radius = 14.0;
-
-    const _color = Colors.green;
-
-    const _size = 22.0;
-    const _weight = FontWeight.w600;
-    const _textColor = Colors.white;
-
-    return Container(
-      width: double.maxFinite,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(_radius)),
-        color: _color,
-      ),
-      child: InkWell(
-        borderRadius: const BorderRadius.all(Radius.circular(_radius)),
-        onTap: () => {},
-        child: const Padding(
-          padding: EdgeInsets.all(_padding),
-          child: Center(
-            child: Text(
-              'Adicionar ao Carrinho',
-              style: TextStyle(
-                fontSize: _size,
-                fontWeight: _weight,
-                color: _textColor,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 }
