@@ -45,8 +45,13 @@ class Button extends StatelessWidget {
 
 class StretchButton extends StatelessWidget {
   final String text;
+  final Function function;
 
-  const StretchButton({Key? key, required this.text}) : super(key: key);
+  const StretchButton({
+    Key? key,
+    required this.text,
+    required this.function,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +72,9 @@ class StretchButton extends StatelessWidget {
       ),
       child: InkWell(
         borderRadius: const BorderRadius.all(Radius.circular(_radius)),
-        onTap: () => {},
+        onTap: () {
+          function();
+        },
         child: Padding(
           padding: const EdgeInsets.all(_padding),
           child: Center(

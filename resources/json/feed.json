@@ -1,0 +1,39 @@
+{
+    "list": [
+        {
+            "id": 0,
+            "name": "Maçã",
+            "value": 2.54,
+            "imagePath": "resources/images/apple.png",
+            "curiosity": ""
+        },
+        {
+            "id": 1,
+            "name": "Banana",
+            "value": 1.22,
+            "imagePath": "resources/images/banana.png",
+            "curiosity": ""
+        },
+        {
+            "id": 2,
+            "name": "Manga",
+            "value": 4.32,
+            "imagePath": "resources/images/mango.png",
+            "curiosity": ""
+        },
+        {
+            "id": 3,
+            "name": "Pera",
+            "value": 6.11,
+            "imagePath": "resources/images/pear.png",
+            "curiosity": ""
+        },
+        {
+            "id": 4,
+            "name": "Abacaxi",
+            "value": 4.14,
+            "imagePath": "resources/images/pineapple.png",
+            "curiosity": ""
+        }
+    ]
+}

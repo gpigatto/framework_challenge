@@ -1,11 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:framework_challenge/shared/png_images.dart';
+import 'package:framework_challenge/features/cart/presentation/bloc/cart_cubit.dart';
+import 'package:framework_challenge/features/cart/presentation/pages/remove_dialog.dart';
 import 'package:framework_challenge/shared/widgets/space.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CartItem extends StatelessWidget {
+class CartItem extends StatefulWidget {
+  final List<CartObject> cartList;
+  final CartObject cartObject;
+
   const CartItem({
     Key? key,
+    required this.cartObject,
+    required this.cartList,
   }) : super(key: key);
+
+  @override
+  State<CartItem> createState() => _CartItemState();
+}
+
+class _CartItemState extends State<CartItem> {
+  int _itemQuantity = 0;
+
+  @override
+  void initState() {
+    _itemQuantity = widget.cartObject.quantity;
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,31 +37,33 @@ class CartItem extends StatelessWidget {
         children: [
           Row(
             children: [
-              _image(),
+              _image(widget.cartObject.imagePath),
               const HSpace(12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _name("Maçã"),
-                  _value("R\$12,00"),
+                  _name(widget.cartObject.name),
+                  _value(
+                    "R\$${widget.cartObject.total.toStringAsFixed(2).replaceAll('.', ',')}",
+                  ),
                 ],
               ),
             ],
           ),
-          _productQuantity(),
+          _productQuantity(context, widget.cartObject.quantity),
         ],
       ),
     );
   }
 
-  _image() {
+  _image(imagePath) {
     const _maxWidth = 64.0;
 
     return Container(
       constraints: const BoxConstraints(maxWidth: _maxWidth),
-      child: const Center(
+      child: Center(
         child: Image(
-          image: AssetImage(PngImages.apple),
+          image: AssetImage(imagePath),
         ),
       ),
     );
@@ -75,24 +98,24 @@ class CartItem extends StatelessWidget {
     );
   }
 
-  _productQuantity() {
+  _productQuantity(BuildContext context, quantity) {
     return Row(
       children: [
-        _button(Icons.remove),
+        _button(context, Icons.remove, true),
         const HSpace(16),
         Column(
           children: [
-            _quantity(2),
+            _quantity(quantity),
             _leadingTextValue('kg'),
           ],
         ),
         const HSpace(16),
-        _button(Icons.add),
+        _button(context, Icons.add, false),
       ],
     );
   }
 
-  _button(icon) {
+  _button(BuildContext context, icon, remove) {
     const _padding = 4.0;
     const _radius = 10.0;
 
@@ -106,7 +129,45 @@ class CartItem extends StatelessWidget {
       ),
       child: InkWell(
         borderRadius: const BorderRadius.all(Radius.circular(_radius)),
-        onTap: () => {},
+        onTap: () {
+          if (remove && _itemQuantity == 1) {
+            showDialog(
+              context: context,
+              builder: (_) => RemoveDialog(
+                cartList: widget.cartList,
+                cartObject: widget.cartObject,
+              ),
+            );
+          } else if (remove) {
+            _itemQuantity--;
+
+            context.read<CartCubit>().onListChange(
+                  widget.cartList,
+                  CartObject(
+                    id: widget.cartObject.id,
+                    imagePath: widget.cartObject.imagePath,
+                    name: widget.cartObject.name,
+                    quantity: _itemQuantity,
+                    value: widget.cartObject.value,
+                    total: widget.cartObject.quantity * widget.cartObject.value,
+                  ),
+                );
+          } else {
+            _itemQuantity++;
+
+            context.read<CartCubit>().onListChange(
+                  widget.cartList,
+                  CartObject(
+                    id: widget.cartObject.id,
+                    imagePath: widget.cartObject.imagePath,
+                    name: widget.cartObject.name,
+                    quantity: _itemQuantity,
+                    value: widget.cartObject.value,
+                    total: widget.cartObject.quantity * widget.cartObject.value,
+                  ),
+                );
+          }
+        },
         child: Padding(
           padding: const EdgeInsets.all(_padding),
           child: Icon(

@@ -1,3 +1,11 @@
+import 'package:framework_challenge/features/cart/data/cart_data.dart';
+import 'package:framework_challenge/features/cart/domain/commands/cart_command.dart';
+import 'package:framework_challenge/features/cart/domain/repository/cart_interface.dart';
+import 'package:framework_challenge/features/cart/presentation/bloc/cart_cubit.dart';
+import 'package:framework_challenge/features/feed/data/feed_data.dart';
+import 'package:framework_challenge/features/feed/domain/commands/feed_command.dart';
+import 'package:framework_challenge/features/feed/domain/repository/feed_interface.dart';
+import 'package:framework_challenge/features/feed/presentation/bloc/feed_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:framework_challenge/features/login/data/check_biometric_data.dart';
 import 'package:framework_challenge/features/login/data/get_logged_data.dart';
@@ -43,6 +51,8 @@ Future<void> initServiceLocator() async {
   await _loginBiometric();
   await _checkBiometric();
   await _userExist();
+  await _feed();
+  await _cart();
 }
 
 Future<void> _register() async {
@@ -125,4 +135,22 @@ Future<void> _userExist() async {
       .registerLazySingleton(() => UserExistCommand(serviceLocator()));
   //bloc / estado
   serviceLocator.registerFactory(() => UserExistBloc(serviceLocator()));
+}
+
+Future<void> _feed() async {
+  //repositorio / acesso aos dados
+  serviceLocator.registerLazySingleton<FeedInterface>(() => FeedData());
+  //command / regra de negocio
+  serviceLocator.registerLazySingleton(() => FeedCommand(serviceLocator()));
+  //bloc / estado
+  serviceLocator.registerFactory(() => FeedBloc(serviceLocator()));
+}
+
+Future<void> _cart() async {
+  //repositorio / acesso aos dados
+  serviceLocator.registerLazySingleton<CartInterface>(() => CartData());
+  //command / regra de negocio
+  serviceLocator.registerLazySingleton(() => CartCommand(serviceLocator()));
+  //bloc / estado
+  serviceLocator.registerFactory(() => CartCubit(serviceLocator()));
 }
