@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:framework_challenge/core/infrastructure/service_locator.dart';
+import 'package:framework_challenge/features/cart/presentation/bloc/cart_cubit.dart';
 import 'package:framework_challenge/features/home/presentation/pages/home.dart';
 import 'package:framework_challenge/features/login/presentation/bloc/get_logged_bloc.dart';
 
@@ -19,6 +20,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<GetLoggedBloc>(
           create: (BuildContext context) => GetLoggedBloc(serviceLocator()),
+        ),
+        BlocProvider(
+          create: (context) => CartCubit(serviceLocator()),
         ),
       ],
       child: MaterialApp(

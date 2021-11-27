@@ -3,6 +3,7 @@ import 'package:framework_challenge/shared/widgets/space.dart';
 
 class FruitCard extends StatelessWidget {
   final String name;
+  final String tag;
   final double value;
   final String imgPath;
   final Function function;
@@ -10,6 +11,7 @@ class FruitCard extends StatelessWidget {
   const FruitCard({
     Key? key,
     required this.name,
+    required this.tag,
     required this.value,
     required this.imgPath,
     required this.function,
@@ -35,7 +37,7 @@ class FruitCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _Image(imgPath: imgPath),
+              _Image(imgPath: imgPath, tag: tag),
               _Information(name: name, value: value),
             ],
           ),
@@ -46,19 +48,21 @@ class FruitCard extends StatelessWidget {
 }
 
 class _Image extends StatelessWidget {
+  final String imgPath;
+  final String tag;
+
   const _Image({
     Key? key,
     required this.imgPath,
+    required this.tag,
   }) : super(key: key);
-
-  final String imgPath;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Center(
         child: Hero(
-          tag: 'abc',
+          tag: tag,
           child: Image(
             image: AssetImage(imgPath),
           ),

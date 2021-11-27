@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:framework_challenge/features/cart/presentation/bloc/cart_cubit.dart';
 import 'package:framework_challenge/features/cart/presentation/widgets/cart_item.dart';
 
-class CartList extends StatelessWidget {
+class CartList extends StatefulWidget {
   const CartList({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<CartList> createState() => _CartListState();
+}
+
+class _CartListState extends State<CartList> {
+  List<CartObject> _list = [];
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +31,24 @@ class CartList extends StatelessWidget {
               width: _borderWidth,
             ),
           ),
-          child: Column(
-            children: [
-              CartItem(),
-            ],
+          child: BlocConsumer<CartCubit, List<CartObject>>(
+            listener: (context, state) {
+              setState(() {
+                _list = state;
+              });
+            },
+            builder: (context, state) {
+              _list = state;
+
+              return Column(
+                children: _list.map((item) {
+                  return CartItem(
+                    cartList: _list,
+                    cartObject: item,
+                  );
+                }).toList(),
+              );
+            },
           ),
         ),
       ),

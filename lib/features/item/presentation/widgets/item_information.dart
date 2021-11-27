@@ -1,17 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:framework_challenge/shared/widgets/space.dart';
 
-class ItemInformation extends StatelessWidget {
+typedef IntValue = int Function(int);
+
+class ItemInformation extends StatefulWidget {
   final String name;
   final double value;
-  final int quantity;
+  final IntValue callback;
+  final int initialQuantity;
 
   const ItemInformation({
     Key? key,
     required this.name,
     required this.value,
-    required this.quantity,
+    required this.callback,
+    required this.initialQuantity,
   }) : super(key: key);
+
+  @override
+  State<ItemInformation> createState() => _ItemInformationState();
+}
+
+class _ItemInformationState extends State<ItemInformation> {
+  int quantity = 0;
+
+  @override
+  void initState() {
+    setState(() {
+      quantity = widget.initialQuantity;
+    });
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +41,7 @@ class ItemInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: _columnCrossAlign,
       children: [
-        _title(name),
+        _title(widget.name),
         const VSpace(8),
         Row(
           mainAxisAlignment: _rowMainAlign,
@@ -51,7 +71,7 @@ class ItemInformation extends StatelessWidget {
     return Row(
       children: [
         _value(
-          "R\$${value.toStringAsFixed(2).replaceAll('.', ',')}",
+          "R\$${widget.value.toStringAsFixed(2).replaceAll('.', ',')}",
         ),
         const HSpace(4),
         _leadingTextValue('/kg'),
@@ -92,35 +112,68 @@ class ItemInformation extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _button(Icons.remove),
+        _button(
+          Icons.remove,
+          () {
+            if (quantity > 0) {
+              setState(() {
+                quantity--;
+              });
+
+              widget.callback(quantity);
+            }
+          },
+          true,
+        ),
         const HSpace(16),
         Column(
           children: [
-            _quantity(quantity),
+            _quantity(),
             _leadingTextValue('kg'),
           ],
         ),
         const HSpace(16),
-        _button(Icons.add),
+        _button(
+          Icons.add,
+          () {
+            if (quantity < 99) {
+              setState(() {
+                quantity++;
+              });
+
+              widget.callback(quantity);
+            }
+          },
+          false,
+        ),
       ],
     );
   }
 
-  _button(icon) {
+  _button(icon, function, remove) {
     const _padding = 8.0;
     const _radius = 14.0;
 
-    const _color = Colors.green;
+    Color _color;
+
+    if (quantity != 0 && remove || quantity < 99 && !remove) {
+      _color = Colors.green;
+    } else {
+      _color = Colors.black38;
+    }
+
     const _iconColor = Colors.white;
 
     return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(_radius)),
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(_radius)),
         color: _color,
       ),
       child: InkWell(
         borderRadius: const BorderRadius.all(Radius.circular(_radius)),
-        onTap: () => {},
+        onTap: () {
+          function();
+        },
         child: Padding(
           padding: const EdgeInsets.all(_padding),
           child: Icon(
@@ -132,14 +185,14 @@ class ItemInformation extends StatelessWidget {
     );
   }
 
-  _quantity(value) {
+  _quantity() {
     const _weight = FontWeight.w800;
     const _size = 32.0;
 
     const _color = Colors.black;
 
     return Text(
-      value.toString(),
+      quantity.toString(),
       style: const TextStyle(
         fontWeight: _weight,
         fontSize: _size,

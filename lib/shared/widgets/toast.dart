@@ -16,7 +16,7 @@ class CustomToast {
 
   successToast(message, position) {
     Fluttertoast.showToast(
-      msg: "Welcome!",
+      msg: message,
       toastLength: Toast.LENGTH_LONG,
       gravity: position,
       timeInSecForIosWeb: 1,

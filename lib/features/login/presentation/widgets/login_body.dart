@@ -94,16 +94,19 @@ class __LoginBodyState extends State<_LoginBody> {
   _loginBlocHandler(stateContext, state) async {
     if (state is LoginLoaded) {
       if (state.correct) {
-        CustomToast().successToast("Welcome!", ToastGravity.BOTTOM);
+        CustomToast().successToast("Bem vindo!", ToastGravity.BOTTOM);
 
         context.read<GetLoggedBloc>().add(GetLoggedLoad());
 
         Navigator.pop(context);
       } else {
-        CustomToast().errorToast("Invalid User..", ToastGravity.BOTTOM);
+        CustomToast().errorToast("Usuário Inválido..", ToastGravity.BOTTOM);
       }
     } else if (state is LoginError) {
-      CustomToast().errorToast("Something went wrong..", ToastGravity.BOTTOM);
+      CustomToast().errorToast(
+        "Algo de errado não está certo..",
+        ToastGravity.BOTTOM,
+      );
     }
   }
 

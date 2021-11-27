@@ -35,7 +35,7 @@ class __LogoutDialogState extends State<_LogoutDialog> {
       listener: (context, state) {
         if (state is LogoutLoaded) {
           if (state.success) {
-            CustomToast().errorToast("Bye!", ToastGravity.BOTTOM);
+            CustomToast().errorToast("Até mais!", ToastGravity.BOTTOM);
 
             context.read<GetLoggedBloc>().add(GetLoggedLoad());
 
