@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:framework_challenge/shared/app_theme.dart';
 import 'package:framework_challenge/shared/widgets/space.dart';
 
 typedef IntValue = int Function(int);
@@ -83,11 +84,11 @@ class _ItemInformationState extends State<ItemInformation> {
     const _weight = FontWeight.w700;
     const _size = 32.0;
 
-    const _color = Colors.green;
+    final _color = AppTheme().colors.green;
 
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         fontWeight: _weight,
         fontSize: _size,
         color: _color,
@@ -97,11 +98,11 @@ class _ItemInformationState extends State<ItemInformation> {
 
   _leadingTextValue(text) {
     const _size = 16.0;
-    const _color = Colors.black26;
+    final _color = AppTheme().colors.lightGray;
 
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         fontSize: _size,
         color: _color,
       ),
@@ -157,12 +158,12 @@ class _ItemInformationState extends State<ItemInformation> {
     Color _color;
 
     if (quantity != 0 && remove || quantity < 99 && !remove) {
-      _color = Colors.green;
+      _color = AppTheme().colors.green;
     } else {
-      _color = Colors.black38;
+      _color = AppTheme().colors.darkGray;
     }
 
-    const _iconColor = Colors.white;
+    final _iconColor = AppTheme().colors.white;
 
     return Container(
       decoration: BoxDecoration(

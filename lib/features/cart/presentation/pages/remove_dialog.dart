@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:framework_challenge/features/cart/presentation/bloc/cart_cubit.dart';
+import 'package:framework_challenge/shared/app_theme.dart';
 import 'package:framework_challenge/shared/widgets/space.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -52,10 +53,10 @@ class RemoveDialog extends StatelessWidget {
 
   _title() {
     const _title = "Remover item";
-    const _textColor = Colors.green;
+    final _textColor = AppTheme().colors.green;
     const _textSize = 22.0;
 
-    return const Text(
+    return Text(
       _title,
       style: TextStyle(
         color: _textColor,
@@ -66,12 +67,12 @@ class RemoveDialog extends StatelessWidget {
 
   _text() {
     final _title = "Você quer retirar ${cartObject.name} do carrinho?";
-    const _textColor = Colors.green;
+    final _textColor = AppTheme().colors.green;
     const _textSize = 20.0;
 
     return Text(
       _title,
-      style: const TextStyle(
+      style: TextStyle(
         color: _textColor,
         fontSize: _textSize,
       ),
@@ -81,8 +82,8 @@ class RemoveDialog extends StatelessWidget {
   _signOut(BuildContext context) {
     const _text = "Remover";
 
-    final _color = Colors.black38;
-    const _textColor = Colors.white;
+    final _color = AppTheme().colors.darkGray;
+    final _textColor = AppTheme().colors.white;
 
     const _textSize = 20.0;
     const _radius = 12.0;
@@ -116,8 +117,8 @@ class RemoveDialog extends StatelessWidget {
           borderRadius: const BorderRadius.all(
             Radius.circular(_radius),
           ),
-          child: const Padding(
-            padding: EdgeInsets.all(_padding),
+          child: Padding(
+            padding: const EdgeInsets.all(_padding),
             child: Text(
               _text,
               textAlign: TextAlign.center,
