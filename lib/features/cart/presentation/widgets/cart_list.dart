@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:framework_challenge/features/cart/presentation/bloc/cart_cubit.dart';
 import 'package:framework_challenge/features/cart/presentation/widgets/cart_item.dart';
+import 'package:framework_challenge/shared/app_theme.dart';
 
 class CartList extends StatefulWidget {
   const CartList({
@@ -17,7 +18,7 @@ class _CartListState extends State<CartList> {
 
   @override
   Widget build(BuildContext context) {
-    const _borderColor = Colors.black38;
+    final _borderColor = AppTheme().colors.darkGray;
     const _borderWidth = 1.2;
     const _radius = 16.0;
 

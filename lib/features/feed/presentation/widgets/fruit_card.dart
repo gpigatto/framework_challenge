@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:framework_challenge/shared/app_theme.dart';
 import 'package:framework_challenge/shared/widgets/space.dart';
 
 class FruitCard extends StatelessWidget {
@@ -22,7 +23,7 @@ class FruitCard extends StatelessWidget {
     const _padding = 14.0;
     const _radius = 28.0;
 
-    const _borderColor = Colors.black12;
+    final _borderColor = AppTheme().colors.lightGray;
 
     return Container(
       decoration: BoxDecoration(
@@ -130,11 +131,11 @@ class _Information extends StatelessWidget {
     const _weight = FontWeight.w700;
     const _size = 24.0;
 
-    const _color = Colors.green;
+    final _color = AppTheme().colors.green;
 
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         fontWeight: _weight,
         fontSize: _size,
         color: _color,
@@ -144,11 +145,11 @@ class _Information extends StatelessWidget {
 
   _leadingTextValue(text) {
     const _size = 14.0;
-    const _color = Colors.black26;
+    final _color = AppTheme().colors.lightGray;
 
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         fontSize: _size,
         color: _color,
       ),

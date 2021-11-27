@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:framework_challenge/shared/app_theme.dart';
 import 'package:framework_challenge/shared/widgets/space.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
@@ -18,7 +19,7 @@ class PinField extends StatelessWidget {
     const _padding = 16.0;
     const _radius = 16.0;
 
-    final _background = Colors.white;
+    final _background = AppTheme().colors.white;
 
     return Container(
       decoration: BoxDecoration(
@@ -47,9 +48,9 @@ class PinField extends StatelessWidget {
   _pin(BuildContext context, Function onComplete) {
     const _innerRadius = 8.0;
 
-    final _textColor = Colors.green;
-    final _background = Colors.white;
-    final _activeColor = Colors.green;
+    final _textColor = AppTheme().colors.green;
+    final _background = AppTheme().colors.white;
+    final _activeColor = AppTheme().colors.green;
 
     const _shape = PinCodeFieldShape.box;
     const _length = 4;
@@ -86,10 +87,10 @@ class PinField extends StatelessWidget {
   }
 
   _pinTitle(title) {
-    final _textColor = Colors.green;
+    final _textColor = AppTheme().colors.green;
     const _textSize = 20.0;
 
-    final _iconColor = Colors.black38;
+    final _iconColor = AppTheme().colors.darkGray;
 
     return Row(
       children: [

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:framework_challenge/features/login/presentation/bloc/get_logged_bloc.dart';
 import 'package:framework_challenge/features/login/presentation/pages/login.dart';
 import 'package:framework_challenge/features/login/presentation/widgets/logout_dialog.dart';
+import 'package:framework_challenge/shared/app_theme.dart';
 import 'package:framework_challenge/shared/widgets/button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -52,8 +53,8 @@ class _FeedHeaderState extends State<FeedHeader> {
     const _logOutIcon = Icons.logout;
     const _logInicon = Icons.login;
 
-    const _borderColor = Colors.green;
-    const _iconColor = Colors.green;
+    final _borderColor = AppTheme().colors.green;
+    final _iconColor = AppTheme().colors.green;
 
     return BlocBuilder<GetLoggedBloc, GetLoggedState>(
       builder: (context, state) {

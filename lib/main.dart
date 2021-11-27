@@ -4,6 +4,7 @@ import 'package:framework_challenge/core/infrastructure/service_locator.dart';
 import 'package:framework_challenge/features/cart/presentation/bloc/cart_cubit.dart';
 import 'package:framework_challenge/features/home/presentation/pages/home.dart';
 import 'package:framework_challenge/features/login/presentation/bloc/get_logged_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
   await initServiceLocator();
@@ -26,9 +27,11 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Quitanda Framework',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          textTheme: GoogleFonts.manropeTextTheme(
+            Theme.of(context).textTheme,
+          ),
         ),
         home: const Home(),
       ),

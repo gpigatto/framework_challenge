@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:framework_challenge/shared/app_theme.dart';
 
 class CustomToast {
   errorToast(message, position) {
@@ -8,8 +9,8 @@ class CustomToast {
       toastLength: Toast.LENGTH_LONG,
       gravity: position,
       timeInSecForIosWeb: 1,
-      backgroundColor: Colors.red,
-      textColor: Colors.white,
+      backgroundColor: AppTheme().colors.darkGray,
+      textColor: AppTheme().colors.white,
       fontSize: 16.0,
     );
   }
@@ -20,8 +21,8 @@ class CustomToast {
       toastLength: Toast.LENGTH_LONG,
       gravity: position,
       timeInSecForIosWeb: 1,
-      backgroundColor: Colors.green,
-      textColor: Colors.white,
+      backgroundColor: AppTheme().colors.green,
+      textColor: AppTheme().colors.white,
       fontSize: 16.0,
     );
   }

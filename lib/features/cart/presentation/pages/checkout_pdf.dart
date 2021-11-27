@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:framework_challenge/shared/app_theme.dart';
 import 'package:framework_challenge/shared/widgets/button.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -47,8 +48,8 @@ class CheckoutPdf extends StatelessWidget {
 
   _back(context) {
     const _icon = Icons.arrow_back_ios_new_rounded;
-    const _borderColor = Colors.green;
-    const _iconColor = Colors.green;
+    final _borderColor = AppTheme().colors.green;
+    final _iconColor = AppTheme().colors.green;
 
     return Button(
       borderColor: _borderColor,
@@ -62,8 +63,8 @@ class CheckoutPdf extends StatelessWidget {
 
   _share(context) {
     const _icon = Icons.share;
-    const _borderColor = Colors.green;
-    const _iconColor = Colors.green;
+    final _borderColor = AppTheme().colors.green;
+    final _iconColor = AppTheme().colors.green;
 
     return Button(
       borderColor: _borderColor,
@@ -77,9 +78,9 @@ class CheckoutPdf extends StatelessWidget {
 
   _divider() {
     const _thickness = 1.2;
-    const _color = Colors.green;
+    final _color = AppTheme().colors.green;
 
-    return const Divider(
+    return Divider(
       thickness: _thickness,
       color: _color,
     );

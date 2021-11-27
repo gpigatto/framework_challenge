@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:framework_challenge/shared/app_theme.dart';
 
 class UsernameField extends StatelessWidget {
   final Function onChage;
@@ -13,11 +14,11 @@ class UsernameField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _color = Colors.white;
-    final _cursorColor = Colors.green;
+    final _color = AppTheme().colors.white;
+    final _cursorColor = AppTheme().colors.green;
 
     final _icon = Icons.person;
-    final _iconColor = Colors.black38;
+    final _iconColor = AppTheme().colors.darkGray;
 
     const _radius = 16.0;
     const _innerPaddingHorizontal = 8.0;

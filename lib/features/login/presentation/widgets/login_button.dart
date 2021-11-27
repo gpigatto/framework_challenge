@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:framework_challenge/shared/app_theme.dart';
 
 class LoginButton extends StatelessWidget {
   final String label;
@@ -10,8 +11,8 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _color = Colors.black38;
-    final _textColor = Colors.white;
+    final _color = AppTheme().colors.darkGray;
+    final _textColor = AppTheme().colors.white;
 
     const _textSize = 20.0;
     const _radius = 12.0;

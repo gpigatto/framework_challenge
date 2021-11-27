@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:framework_challenge/features/cart/presentation/bloc/cart_cubit.dart';
+import 'package:framework_challenge/shared/app_theme.dart';
 import 'package:framework_challenge/shared/widgets/space.dart';
 
 class CartTotal extends StatefulWidget {
@@ -58,26 +59,13 @@ class _CartTotalState extends State<CartTotal> {
         );
       },
     );
-
-    // return Column(
-    //   crossAxisAlignment: _crossAlign,
-    //   children: [
-    //     _subTotal('test', 1),
-    //     const VSpace(16),
-    //     _subTotal('test', 1),
-    //     const VSpace(16),
-    //     _divider(),
-    //     const VSpace(16),
-    //     _total('Total', 1),
-    //   ],
-    // );
   }
 
   Divider _divider() {
     const _thickness = 1.2;
-    const _color = Colors.green;
+    final _color = AppTheme().colors.green;
 
-    return const Divider(
+    return Divider(
       thickness: _thickness,
       color: _color,
     );
@@ -86,14 +74,14 @@ class _CartTotalState extends State<CartTotal> {
   _subTotal(title, value) {
     const _weight = FontWeight.w600;
     const _size = 18.0;
-    const _titleColor = Colors.black38;
+    final _titleColor = AppTheme().colors.darkGray;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           title,
-          style: const TextStyle(
+          style: TextStyle(
             fontWeight: _weight,
             fontSize: _size,
             color: _titleColor,

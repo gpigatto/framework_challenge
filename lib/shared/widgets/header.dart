@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:framework_challenge/shared/app_theme.dart';
 import 'package:framework_challenge/shared/widgets/button.dart';
 
 class Header extends StatelessWidget {
@@ -18,8 +19,8 @@ class Header extends StatelessWidget {
 
   _back(context) {
     const _icon = Icons.arrow_back_ios_new_rounded;
-    const _borderColor = Colors.green;
-    const _iconColor = Colors.green;
+    final _borderColor = AppTheme().colors.green;
+    final _iconColor = AppTheme().colors.green;
 
     return Button(
       borderColor: _borderColor,

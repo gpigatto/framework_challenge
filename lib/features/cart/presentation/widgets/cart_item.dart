@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:framework_challenge/features/cart/presentation/bloc/cart_cubit.dart';
 import 'package:framework_challenge/features/cart/presentation/pages/remove_dialog.dart';
+import 'package:framework_challenge/shared/app_theme.dart';
 import 'package:framework_challenge/shared/widgets/space.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -86,11 +87,11 @@ class _CartItemState extends State<CartItem> {
     const _weight = FontWeight.w700;
     const _size = 16.0;
 
-    const _color = Colors.green;
+    final _color = AppTheme().colors.green;
 
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         fontWeight: _weight,
         fontSize: _size,
         color: _color,
@@ -119,12 +120,12 @@ class _CartItemState extends State<CartItem> {
     const _padding = 4.0;
     const _radius = 10.0;
 
-    const _color = Colors.green;
-    const _iconColor = Colors.white;
+    final _color = AppTheme().colors.green;
+    final _iconColor = AppTheme().colors.white;
 
     return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(_radius)),
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(_radius)),
         color: _color,
       ),
       child: InkWell(
@@ -198,11 +199,11 @@ class _CartItemState extends State<CartItem> {
 
   _leadingTextValue(text) {
     const _size = 12.0;
-    const _color = Colors.black26;
+    final _color = AppTheme().colors.lightGray;
 
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         fontSize: _size,
         color: _color,
       ),

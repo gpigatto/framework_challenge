@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:framework_challenge/core/infrastructure/service_locator.dart';
 import 'package:framework_challenge/features/login/presentation/bloc/get_logged_bloc.dart';
 import 'package:framework_challenge/features/login/presentation/bloc/logout_bloc.dart';
+import 'package:framework_challenge/shared/app_theme.dart';
 import 'package:framework_challenge/shared/widgets/space.dart';
 import 'package:framework_challenge/shared/widgets/toast.dart';
 
@@ -76,7 +77,7 @@ class __LogoutDialogState extends State<_LogoutDialog> {
 
   _title() {
     const _title = "Sign Out";
-    final _textColor = Colors.green;
+    final _textColor = AppTheme().colors.green;
     const _textSize = 22.0;
 
     return Text(
@@ -90,7 +91,7 @@ class __LogoutDialogState extends State<_LogoutDialog> {
 
   _text() {
     const _title = "Do you really want to sign out?";
-    final _textColor = Colors.green;
+    final _textColor = AppTheme().colors.green;
     const _textSize = 20.0;
 
     return Text(
@@ -105,8 +106,8 @@ class __LogoutDialogState extends State<_LogoutDialog> {
   _signOut() {
     const _text = "Sign Out";
 
-    final _color = Colors.black38;
-    final _textColor = Colors.white;
+    final _color = AppTheme().colors.darkGray;
+    final _textColor = AppTheme().colors.white;
 
     const _textSize = 20.0;
     const _radius = 12.0;

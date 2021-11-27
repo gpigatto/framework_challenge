@@ -64,6 +64,15 @@ class _CartState extends State<Cart> {
                       return StretchButton(
                         text: 'Checkout',
                         function: () async {
+                          if (cartState.isEmpty) {
+                            CustomToast().errorToast(
+                              "Você não tem nenhum item no carrinho",
+                              ToastGravity.BOTTOM,
+                            );
+
+                            return;
+                          }
+
                           final pdf = pw.Document();
 
                           _getPdf(

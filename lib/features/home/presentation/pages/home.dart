@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:framework_challenge/features/home/utils/navigation_list.dart';
+import 'package:framework_challenge/shared/app_theme.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -40,7 +41,7 @@ class _HomeState extends State<Home> {
         return item.bottomNavigationBarItem;
       }).toList(),
       currentIndex: _selectedIndex,
-      selectedItemColor: Colors.green,
+      selectedItemColor: AppTheme().colors.green,
       onTap: _onItemTapped,
     );
   }

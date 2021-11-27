@@ -16,6 +16,7 @@ import 'package:framework_challenge/features/login/presentation/utils/validation
 import 'package:framework_challenge/features/login/presentation/widgets/login_button.dart';
 import 'package:framework_challenge/features/login/presentation/widgets/pin_field.dart';
 import 'package:framework_challenge/features/login/presentation/widgets/username_field.dart';
+import 'package:framework_challenge/shared/app_theme.dart';
 import 'package:framework_challenge/shared/widgets/space.dart';
 import 'package:framework_challenge/shared/widgets/toast.dart';
 import 'package:local_auth/local_auth.dart';
@@ -365,7 +366,7 @@ class __LoginBodyState extends State<_LoginBody> {
   }
 
   _title(title) {
-    final _color = Colors.green;
+    final _color = AppTheme().colors.green;
     const _textSize = 42.0;
 
     return Text(
@@ -378,7 +379,7 @@ class __LoginBodyState extends State<_LoginBody> {
   }
 
   _subtitle(title) {
-    final _color = Colors.green;
+    final _color = AppTheme().colors.green;
     const _textSize = 20.0;
 
     return Text(
@@ -391,8 +392,8 @@ class __LoginBodyState extends State<_LoginBody> {
   }
 
   _hello(text) {
-    final _textColor = Colors.green;
-    final _textHighlight = Colors.green;
+    final _textColor = AppTheme().colors.green;
+    final _textHighlight = AppTheme().colors.green;
     const _textSize = 42.0;
 
     return Row(

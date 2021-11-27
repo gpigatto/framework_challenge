@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:framework_challenge/shared/app_theme.dart';
 
 class Button extends StatelessWidget {
-  final MaterialColor borderColor;
+  final Color borderColor;
   final IconData icon;
-  final MaterialColor iconColor;
+  final Color iconColor;
   final Function function;
 
   const Button({
@@ -58,16 +59,16 @@ class StretchButton extends StatelessWidget {
     const _padding = 14.0;
     const _radius = 14.0;
 
-    const _color = Colors.green;
+    final _color = AppTheme().colors.green;
 
     const _size = 22.0;
     const _weight = FontWeight.w600;
-    const _textColor = Colors.white;
+    final _textColor = AppTheme().colors.white;
 
     return Container(
       width: double.maxFinite,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(_radius)),
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(_radius)),
         color: _color,
       ),
       child: InkWell(
@@ -80,7 +81,7 @@ class StretchButton extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: _size,
                 fontWeight: _weight,
                 color: _textColor,
